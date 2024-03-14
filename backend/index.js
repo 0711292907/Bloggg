@@ -19,7 +19,7 @@ const pool = mysql.createPool({
   
   app.get("/",(req,res)=>{
     res.json("hello this is the backend")})
-// Example: Get all books
+//  Get all books
 app.get("/books", (req, res) => {
     const q = "SELECT * FROM books";
     pool.query(q, (err, data) => {
@@ -31,7 +31,7 @@ app.get("/books", (req, res) => {
     });
   });
   
-// Example: Insert a new book
+// Insert a new book
 app.post("/books", (req, res) => {
     const q = "INSERT INTO books(`title`, `descr`, `cover`, `user_name`) VALUES (?)";
     const values = [
@@ -48,7 +48,7 @@ app.post("/books", (req, res) => {
       });
     });
     
-  // Example: Delete a book by ID
+  //  Delete a book by ID
   app.delete("/books/:id", (req, res) => {
     const bookId = req.params.id;
     const q = "DELETE FROM books WHERE id = ?";
@@ -59,7 +59,7 @@ app.post("/books", (req, res) => {
     });
   });
   
-  // Example: Update a book by ID
+  // Update a book by ID
   app.put("/books/:id", (req, res) => {
     const bookId = req.params.id;
     const q = "UPDATE books SET `title` = ?, `descr` = ?, `cover` = ?, `user_name` = ? WHERE id = ?";
