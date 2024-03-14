@@ -16,5 +16,17 @@ const pool = mysql.createPool({
   
   app.get("/",(req,res)=>{
     res.json("hello this is the backend")})
+// Example: Get all books
+app.get("/books", (req, res) => {
+    const q = "SELECT * FROM books";
+    pool.query(q, (err, data) => {
+      if (err) {
+        console.log(err);
+        return res.json(err);
+      }
+      return res.json(data);
+    });
+  });
+  
 
 app.listen (8800, ()=>{console.log ( "connected to backend")})
