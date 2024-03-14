@@ -1,28 +1,28 @@
-import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
-import axios from "axios";
+//import React from "react";
+//import { useEffect } from "react";
+//import { useState } from "react";
+//import axios from "axios";
 //import { Link } from "react-router-dom";
 
-const Books = () => {
-  const [books, setBooks] = useState([]);
+//const Books = () => {
+  //const [books, setBooks] = useState([]);
 
-  useEffect(() => {
-    const fetchAllBooks = async () => {
-      try {
-        const res = await axios.get("http://localhost:8800/books");
-        setBooks(res.data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    fetchAllBooks();
-  }, [])
+  //useEffect(() => {
+    //const fetchAllBooks = async () => {
+    //  try {
+      //  const res = await axios.get("http://localhost:8800/books");
+        //setBooks(res.data);
+      //} catch (err) {
+        //console.log(err);
+      //}
+    //};
+    //fetchAllBooks();
+  //}, [])
 
-  return (
-    <div>Books</div>
-  )
-  }    
+  //return (
+    //<div>Books</div>
+  //)
+  //}    
   //console.log(books);
 
   //const handleDelete = async (id) => {
@@ -65,5 +65,36 @@ const Books = () => {
     //</div>
   //);
 //};
+
+//export default Books;
+
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+
+const Books = () => {
+  const [books, setBooks] = useState([]); // Remove this line if not needed
+
+  useEffect(() => {
+    const fetchAllBooks = async () => {
+      try {
+        const res = await axios.get("http://localhost:8800/books");
+        setBooks(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchAllBooks();
+  }, []);
+
+  return (
+    <div>
+      {/* Display your books data here */}
+      {/* For example: */}
+      {books.map((book) => (
+        <div key={book.id}>{book.title}</div>
+      ))}
+    </div>
+  );
+};
 
 export default Books;
