@@ -3,6 +3,8 @@ import mysql from "mysql2";
 //import cors from "cors";
 
 const app = express();
+app.use(express.json());
+
 
 // Create a MySQL connection pool
 const pool = mysql.createPool({
@@ -32,10 +34,12 @@ app.get("/books", (req, res) => {
 app.post("/books", (req, res) => {
     const q = "INSERT INTO books(`title`, `descr`, `cover`, `user_name`) VALUES (?)";
     const values = [
-       "title from backend ",
-      "descr from backend",
-      "user_email from backend",
-      "cover  from backend",
+      
+    req.body.title,
+    req.body.descr,
+    req.body.cover,
+    req.body.user_name,
+
     ];
     pool.query(q, [values], (err, data) => {
         if (err) return res.send(err);
