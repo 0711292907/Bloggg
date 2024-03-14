@@ -136,14 +136,14 @@ const Books = () => {
 
   return (
     <div>
-      <h1>Lama Book Shop</h1>
+      <h1>Blog app</h1>
       <div className="books">
         {books.map((book) => (
           <div key={book.id} className="book">
             <img src={book.cover} alt="" />
             <h2>{book.title}</h2>
-            <p>{book.desc}</p>
-            <span>${book.price}</span>
+            <p>{book.descr}</p>
+            <span>${book.user_name}</span>
             <button className="delete" onClick={() => handleDelete(book.id)}>Delete</button>
             <button className="update">
               <Link
@@ -159,7 +159,7 @@ const Books = () => {
 
       <button className="addHome">
         <Link to="/add" style={{ color: "inherit", textDecoration: "none" }}>
-          Add new book
+          Add new Post
         </Link>
       </button>
     </div>
