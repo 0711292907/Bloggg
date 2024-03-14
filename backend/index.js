@@ -28,5 +28,22 @@ app.get("/books", (req, res) => {
     });
   });
   
+// Example: Insert a new book
+app.post("/books", (req, res) => {
+    const q = "INSERT INTO books(`title`, `descr`, `cover`, `user_name`) VALUES (?)";
+    const values = [
+       "title from backend ",
+      "descr from backend",
+      "user_email from backend",
+      "cover  from backend",
+    ];
+    pool.query(q, [values], (err, data) => {
+        if (err) return res.send(err);
+        return res.json(data);
+      });
+    });
+    
+  
+
 
 app.listen (8800, ()=>{console.log ( "connected to backend")})
