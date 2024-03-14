@@ -48,7 +48,34 @@ app.post("/books", (req, res) => {
       });
     });
     
+  // Example: Delete a book by ID
+  app.delete("/books/:id", (req, res) => {
+    const bookId = req.params.id;
+    const q = "DELETE FROM books WHERE id = ?";
   
+    pool.query(q, [bookId], (err, data) => {
+      if (err) return res.send(err);
+      return res.json(data);
+    });
+  });
+  
+  // Example: Update a book by ID
+  app.put("/books/:id", (req, res) => {
+    const bookId = req.params.id;
+    const q = "UPDATE books SET `title` = ?, `descr` = ?, `cover` = ?, `user_name` = ? WHERE id = ?";
+  
+    const values = [
+      req.body.title,
+      req.body.descr,
+      req.body.cover,
+      req.body.user_name,
+    ];
+  
+    pool.query(q, [...values, bookId], (err, data) => {
+      if (err) return res.send(err);
+      return res.json(data);
+    });
+  });
 
 
 app.listen (8800, ()=>{console.log ( "connected to backend")})
