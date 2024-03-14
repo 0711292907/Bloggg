@@ -39,7 +39,7 @@ app.post("/books", (req, res) => {
     ];
     pool.query(q, [values], (err, data) => {
         if (err) return res.send(err);
-        return res.json(data);
+        return res.json("Post has been successfully added");
       });
     });
     
