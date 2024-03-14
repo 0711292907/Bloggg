@@ -34,32 +34,32 @@ const Add = () => {
       <h1>Add New Post</h1>
       <input
         type="text"
-        placeholder="Post title"
+        placeholder="POST TITLE"
         name="title"
         onChange={handleChange}
       />
       <textarea
         rows={5}
         type="text"
-        placeholder="Post description"
+        placeholder="POST DESCRIPTION"
         name="descr"
         onChange={handleChange}
       />
       <input
         type="text"
-        placeholder="Post Picture"
+        placeholder="POST COVER"
         name="cover"
         onChange={handleChange}
       />
       <input
         type="text"
-        placeholder="John Doe"
+        placeholder="USER_NAME"
         name="user_name"
         onChange={handleChange}
       />
       <button onClick={handleClick}>Add</button>
       {error && "Something went wrong!"}
-      <Link to="/">See all Posts</Link>
+      <Link to="/">See All Posts</Link>
     </div>
   );
 };
