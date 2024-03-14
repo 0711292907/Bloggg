@@ -57,7 +57,7 @@ const Add = () => {
         name="user_name"
         onChange={handleChange}
       />
-      <button onClick={handleClick}>Add</button>
+      <button className="formButton" onClick={handleClick}>Add</button>
       {error && "Something went wrong!"}
       <Link to="/">See All Posts</Link>
     </div>
