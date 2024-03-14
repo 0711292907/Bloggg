@@ -6,9 +6,9 @@ import { Link, useNavigate } from "react-router-dom";
 const Add = () => {
   const [book, setBook] = useState({
     title: "",
-    desc: "",
-    price: null,
+    descr: "",
     cover: "",
+    user_name: "",
   });
   const [error,setError] = useState(false)
 
@@ -31,35 +31,35 @@ const Add = () => {
 
   return (
     <div className="form">
-      <h1>Add New Book</h1>
+      <h1>Add New Post</h1>
       <input
         type="text"
-        placeholder="Book title"
+        placeholder="Post title"
         name="title"
         onChange={handleChange}
       />
       <textarea
         rows={5}
         type="text"
-        placeholder="Book desc"
-        name="desc"
-        onChange={handleChange}
-      />
-      <input
-        type="number"
-        placeholder="Book price"
-        name="price"
+        placeholder="Post description"
+        name="descr"
         onChange={handleChange}
       />
       <input
         type="text"
-        placeholder="Book cover"
+        placeholder="Post Picture"
         name="cover"
+        onChange={handleChange}
+      />
+      <input
+        type="text"
+        placeholder="John Doe"
+        name="user_name"
         onChange={handleChange}
       />
       <button onClick={handleClick}>Add</button>
       {error && "Something went wrong!"}
-      <Link to="/">See all books</Link>
+      <Link to="/">See all Posts</Link>
     </div>
   );
 };
