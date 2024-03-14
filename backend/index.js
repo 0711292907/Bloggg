@@ -9,7 +9,7 @@ app.use(express.json());
 
 // Create a MySQL connection pool
 const pool = mysql.createPool({
-    connectionLimit: 10, // Maximum number of connections in the pool
+    connectionLimit: 20, // Maximum number of connections in the pool
     host: "localhost",
     user: "root",
     password: "Mur@ngi02",
