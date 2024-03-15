@@ -20,16 +20,16 @@ const pool = mysql.createPool({
   app.get("/",(req,res)=>{
     res.json("hello this is the backend")})
 //  Get all books
-//app.get("/books", (req, res) => {
-  //  const q = "SELECT * FROM books";
-    //pool.query(q, (err, data) => {
-      //if (err) {
-        //console.log(err);
-        //return res.json(err);
-      //}
-      //return res.json(data);
-    //});
-  //});
+app.get("/books", (req, res) => {
+  const q = "SELECT * FROM books";
+    pool.query(q, (err, data) => {
+      if (err) {
+        console.log(err);
+        return res.json(err);
+      }
+      return res.json(data);
+    });
+  });
   
 // Insert a new book
 //app.post("/books", (req, res) => {
