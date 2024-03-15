@@ -32,6 +32,8 @@ app.get("/books", (req, res) => {
   });
   
 
+
+
 // Insert a new book
 app.post("/books", (req, res) => {
     const q = "INSERT INTO books(`title`, `descr`, `cover`, `user_name`) VALUES (?)";
@@ -60,7 +62,7 @@ app.post("/books", (req, res) => {
     });
   });
   
-  // Update a post by ID
+   Update a post by ID
   app.put("/books/:id", (req, res) => {
     const bookId = req.params.id;
     const q = "UPDATE books SET `title` = ?, `descr` = ?, `cover` = ?, `user_name` = ? WHERE id = ?";
