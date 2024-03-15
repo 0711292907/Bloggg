@@ -62,7 +62,7 @@ app.post("/books", (req, res) => {
     });
   });
   
-   Update a post by ID
+  // Update a post by ID
   app.put("/books/:id", (req, res) => {
     const bookId = req.params.id;
     const q = "UPDATE books SET `title` = ?, `descr` = ?, `cover` = ?, `user_name` = ? WHERE id = ?";
