@@ -13,7 +13,7 @@ const pool = mysql.createPool({
     host: "localhost",
     user: "root",
     password: "Mur@ngi02",
-    database: "test",
+    database: "tests",
     debug: false, // Set to true for debugging
   });
   
