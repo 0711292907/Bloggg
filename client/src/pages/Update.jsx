@@ -3,10 +3,9 @@ import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Update = () => {
-  const [book, setBook] = useState({
+  const [posts, setPosts] = useState({
     title: "",
     descr: "",
-    cover: "",
     user_name: "",
   });
   const [error,setError] = useState(false)
@@ -14,7 +13,7 @@ const Update = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const bookId = location.pathname.split("/")[2];
+  const postsId = location.pathname.split("/")[2];
 
   const handleChange = (e) => {
     setBook((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -24,7 +23,7 @@ const Update = () => {
     e.preventDefault();
 
     try {
-      await axios.put(`http://localhost:8800/books/${bookId}`, book);
+      await axios.put(`http://localhost:8800/posts/${postsId}`, posts);
       navigate("/");
     } catch (err) {
       console.log(err);
