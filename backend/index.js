@@ -52,10 +52,10 @@ app.post("/books", (req, res) => {
     
   //  Delete a post by ID
  app.delete("/posts/:id", (req, res) => {
-   const bookId = req.params.id;
+   const postsId = req.params.id;
     const q = "DELETE FROM posts WHERE id = ?";
   
-    pool.query(q, [bookId], (err, data) => {
+    pool.query(q, [postsId], (err, data) => {
       if (err) return res.send(err);
       return res.json(data);
     });
@@ -63,7 +63,7 @@ app.post("/books", (req, res) => {
   
   // Update a post by ID
   app.put("/posts/:id", (req, res) => {
-    const bookId = req.params.id;
+    const postsId = req.params.id;
     const q = "UPDATE posts SET `title` = ?, `descr` = ?, `user_name` = ? WHERE id = ?";
   
     const values = [
@@ -72,7 +72,7 @@ app.post("/books", (req, res) => {
       req.body.user_name,
     ];
   
-    pool.query(q, [...values, bookId], (err, data) => {
+    pool.query(q, [...values, postsId], (err, data) => {
      if (err) return res.send(err);
       return res.json(data);
     });
