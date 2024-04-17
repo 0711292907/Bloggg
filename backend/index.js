@@ -69,7 +69,7 @@ app.post("/books", (req, res) => {
     const values = [
       req.body.title,
       req.body.descr,
-      req.body.user_name,
+      req.body.user_name,  
     ];
   
     pool.query(q, [...values, postsId], (err, data) => {
