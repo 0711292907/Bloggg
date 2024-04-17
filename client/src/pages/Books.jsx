@@ -5,26 +5,26 @@ import React, { useEffect, useState } from "react";
 import axios from "axios"; // Import axios only once
 import { Link } from "react-router-dom";
 
-const Books = () => {
-  const [books, setBooks] = useState([]);
+const Posts = () => {
+  const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    const fetchAllBooks = async () => {
+    const fetchAllPosts = async () => {
       try {
-        const res = await axios.get("http://localhost:8800/books");
+        const res = await axios.get("http://localhost:8800/posts");
         setBooks(res.data);
       } catch (err) {
         console.log(err);
       }
     };
-    fetchAllBooks();
+    fetchAllPosts();
   }, []);
 
-  console.log(books);
+  console.log(postss);
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:8800/books/${id}`);
+      await axios.delete(`http://localhost:8800/postss/${id}`);
       window.location.reload();
     } catch (err) {
       console.log(err);
@@ -34,19 +34,19 @@ const Books = () => {
   return (
     <div>
       <h1>Blog app</h1>
-      <div className="books">
-        {books.map((book) => (
-          <div key={book.id} className="book">
-            <img src={book.cover} alt="" />
-            <h2>{book.title}</h2>
-            <p>{book.descr}</p>
-            <span>{book.user_name}</span>
-            <button className="delete" onClick={() => handleDelete(book.id)}>
+      <div className="posts">
+        {books.map((post) => (
+          <div key={posts.id} className="post">
+            
+            <h2>{Post.title}</h2>
+            <p>{Post.descr}</p>
+            <span>{Post.user_name}</span>
+            <button className="delete" onClick={() => handleDelete(Post.id)}>
               Delete
             </button>
             <button className="update">
               <Link
-                to={`/update/${book.id}`}
+                to={`/update/${PostS.id}`}
                 style={{ color: "inherit", textDecoration: "none" }}
               >
                 Update
