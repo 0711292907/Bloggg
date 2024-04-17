@@ -20,7 +20,7 @@ const pool = mysql.createPool({
   app.get("/",(req,res)=>{
     res.json("hello this is the backend")})
 //  Get all posts
-app.get("/books", (req, res) => {
+app.get("/posts", (req, res) => {
  const q = "SELECT * FROM test.posts";
    pool.query(q, (err, data) => {
      if (err) {
@@ -51,9 +51,9 @@ app.post("/books", (req, res) => {
     });
     
   //  Delete a post by ID
- app.delete("/books/:id", (req, res) => {
+ app.delete("/posts/:id", (req, res) => {
    const bookId = req.params.id;
-    const q = "DELETE FROM books WHERE id = ?";
+    const q = "DELETE FROM posts WHERE id = ?";
   
     pool.query(q, [bookId], (err, data) => {
       if (err) return res.send(err);
@@ -62,9 +62,9 @@ app.post("/books", (req, res) => {
   });
   
   // Update a post by ID
-  app.put("/books/:id", (req, res) => {
+  app.put("/posts/:id", (req, res) => {
     const bookId = req.params.id;
-    const q = "UPDATE books SET `title` = ?, `descr` = ?, `user_name` = ? WHERE id = ?";
+    const q = "UPDATE posts SET `title` = ?, `descr` = ?, `user_name` = ? WHERE id = ?";
   
     const values = [
       req.body.title,
