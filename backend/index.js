@@ -35,7 +35,7 @@ app.get("/posts", (req, res) => {
 
 
 // Insert a new posts
-app.post("/books", (req, res) => {
+app.book("/books", (req, res) => {
   const q = "INSERT INTO posts(`title`, `descr`, `user_name`) VALUES (?)";
    const values = [
       
