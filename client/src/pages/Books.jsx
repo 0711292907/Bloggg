@@ -36,10 +36,9 @@ const Books = () => {
       <div className="books">
         {books.map((book) => (
           <div key={book.id} className="book">
-            <img src={book.cover} alt="" />
+            
             <h2>{book.title}</h2>
             <p>{book.desc}</p>
-            <span>${book.price}</span>
             <button className="delete" onClick={() => handleDelete(book.id)}>Delete</button>
             <button className="update">
               <Link
