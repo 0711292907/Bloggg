@@ -1,31 +1,30 @@
-
-
-//export default Book
-import React, { useEffect, useState } from "react";
-import axios from "axios"; // Import axios only once
+import React from "react";
+import { useEffect } from "react";
+import { useState } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
 
-const Posts = () => {
-  const [posts, setPosts] = useState([]);
+const Books = () => {
+  const [books, setBooks] = useState([]);
 
   useEffect(() => {
-    const fetchAllPosts = async () => {
+    const fetchAllBooks = async () => {
       try {
-        const res = await axios.get("http://localhost:8800/posts");
+        const res = await axios.get("http://localhost:8800/books");
         setBooks(res.data);
       } catch (err) {
         console.log(err);
       }
     };
-    fetchAllPosts();
+    fetchAllBooks();
   }, []);
 
-  console.log(postss);
+  console.log(books);
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:8800/postss/${id}`);
-      window.location.reload();
+      await axios.delete(`http://localhost:8800/books/${id}`);
+      window.location.reload()
     } catch (err) {
       console.log(err);
     }
@@ -33,20 +32,18 @@ const Posts = () => {
 
   return (
     <div>
-      <h1>Blog app</h1>
-      <div className="posts">
-        {books.map((post) => (
-          <div key={posts.id} className="post">
-            
-            <h2>{Post.title}</h2>
-            <p>{Post.descr}</p>
-            <span>{Post.user_name}</span>
-            <button className="delete" onClick={() => handleDelete(Post.id)}>
-              Delete
-            </button>
+      <h1>Lama Book Shop</h1>
+      <div className="books">
+        {books.map((book) => (
+          <div key={book.id} className="book">
+            <img src={book.cover} alt="" />
+            <h2>{book.title}</h2>
+            <p>{book.desc}</p>
+            <span>${book.price}</span>
+            <button className="delete" onClick={() => handleDelete(book.id)}>Delete</button>
             <button className="update">
               <Link
-                to={`/update/${PostS.id}`}
+                to={`/update/${book.id}`}
                 style={{ color: "inherit", textDecoration: "none" }}
               >
                 Update
@@ -58,7 +55,7 @@ const Posts = () => {
 
       <button className="addHome">
         <Link to="/add" style={{ color: "inherit", textDecoration: "none" }}>
-          Add new Post
+          Add new book
         </Link>
       </button>
     </div>
