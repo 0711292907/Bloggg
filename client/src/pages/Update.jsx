@@ -3,17 +3,18 @@ import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Update = () => {
-  const [posts, setPosts] = useState({
+  const [book, setBook] = useState({
     title: "",
-    descr: "",
+    desc: "",
     user_name: "",
+  
   });
   const [error,setError] = useState(false)
 
   const location = useLocation();
   const navigate = useNavigate();
 
-  const postsId = location.pathname.split("/")[2];
+  const bookId = location.pathname.split("/")[2];
 
   const handleChange = (e) => {
     setBook((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -23,7 +24,7 @@ const Update = () => {
     e.preventDefault();
 
     try {
-      await axios.put(`http://localhost:8800/posts/${postsId}`, posts);
+      await axios.put(`http://localhost:8800/Posts/${bookId}`, book);
       navigate("/");
     } catch (err) {
       console.log(err);
@@ -33,39 +34,34 @@ const Update = () => {
 
   return (
     <div className="form">
-      <h1>Update Post</h1>
+      <h1>Update Your Post</h1>
       <input
         type="text"
-        placeholder="POST TITLE"
+        placeholder="Post title"
         name="title"
         onChange={handleChange}
       />
       <textarea
         rows={5}
         type="text"
-        placeholder="POST DESCRIPTION"
-        name="descr"
+        placeholder="Post description"
+        name="desc"
         onChange={handleChange}
       />
       <input
         type="text"
-        placeholder="COVER PICTURE"
-        name="cover"
-        onChange={handleChange}
-      />
-      <input
-        type="text"
-        placeholder="USER_NAME"
+        placeholder="John@gmail.com"
         name="user_name"
         onChange={handleChange}
       />
-      <button className="formBotton"  onClick={handleClick}>Update</button>
+     
+      <button onClick={handleClick}>Update</button>
       {error && "Something went wrong!"}
-      <Link to="/">See All Posts</Link>
+      <Link to="/">See all Posts</Link>
     </div>
   );
 };
-export default Update;  
 
+export default Update;
 
 
