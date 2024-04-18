@@ -10,7 +10,7 @@ const Books = () => {
   useEffect(() => {
     const fetchAllBooks = async () => {
       try {
-        const res = await axios.get("http://localhost:8800/books");
+        const res = await axios.get("http://localhost:8800/Posts");
         setBooks(res.data);
       } catch (err) {
         console.log(err);
@@ -55,7 +55,7 @@ const Books = () => {
 
       <button className="addHome">
         <Link to="/add" style={{ color: "inherit", textDecoration: "none" }}>
-          Add new book
+          Add new Post
         </Link>
       </button>
     </div>
